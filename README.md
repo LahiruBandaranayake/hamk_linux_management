@@ -30,7 +30,7 @@ Converting .PEM to .PPK
 - Confirmed saving without passphrase
 - Saved the converted key with .ppk extension
 
-![PuTTY Connection](images/Ass1_putty_connection.jpg)
+![PuTTY Connection](images/ass1_putty_connection.jpg)
 
 ### Establishing SSH Connection
 - Opened PuTTY
