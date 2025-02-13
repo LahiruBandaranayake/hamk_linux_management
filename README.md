@@ -151,13 +151,16 @@ This task involved creating a shared directory with specific permissions for bot
 ``` sudo groupadd projekti ```
 
 -Directory
+
 ``` sudo mkdir /opt/projekti ```
 
 - Tupu and Lupu were added to the projekti group.
+
 ``` sudo usermod -aG projekti tupu ```
 ``` sudo usermod -aG projekti lupu ```
 
 - Configured group ownership and set the appropriate permissions
+
 ``` sudo chown :projekti /opt/projekti ```
 ``` sudo chmod 2770 /opt/projekti ```
 
@@ -178,6 +181,231 @@ This configuration ensures that:
 - Both Tupu and Lupu have full control over the directory and its contents
 
 To verify settings 
+
 ``` sudo ls -la /opt/projekti ```
 
 ![](images/ass3_9.png)
+
+
+
+## Assignment_5: List and append
+In this assignment, we developed a shell script called print.sh to append a line to the file diskspace.txt, containing the size of the home directory along with the current date and time. We then configured the script to run every 12 hours using crontab, ensuring that it executed at least six times to generate multiple entries in diskspace.txt. To identify the entry with the largest value in the first column, we employed an awk command to extract the line with the maximum value and displayed it in the format: Max=[maximum value], at [date and time]. This task enabled us to automate disk space monitoring and efficiently identify the largest recorded value.
+
+### Step 1: Make a script and add it to cron
+
+
+## Assignment_6: List and append
+This report details the hands-on exploration of the Advanced Package Tool (APT) on a Linux system, focusing on system updates, package management, repository configuration, and troubleshooting techniques
+
+### Part 1: Understanding APT & System Updates
+
+**APT Version Check**
+
+Command :
+
+```apt --version ```
+
+![](images/ass6_1.png)
+
+
+**Package List Update**
+
+Command :
+
+```sudo apt update```
+
+This step is important because:
+
+- Synchronizes the local package index with remote repositories.
+- Ensures the system has up-to-date information on available packages.
+- Is required before installing or upgrading any packages.
+- Helps identify packages that need updating.
+
+**System Upgrade**
+
+Command :
+
+```sudo apt upgrade -y```
+
+1. apt update:
+
+- Refreshes the package index and metadata.
+- Checks for the latest available package information.
+- Does not install or update any packages.
+- It's like checking what's new in the software repository.
+
+2. apt upgrade:
+
+-Downloads and installs newer versions of installed packages.
+-Upgrades the software to the latest available version based on the updated package information.
+-Actually applies the updates and changes to your system.
+
+
+**Pending Updates Check**
+
+Command :
+
+```apt list --upgradable```
+
+![](images/ass6_4.png)
+
+### Part 2: Installing & Managing Packages
+**Package Search**
+
+Command :
+
+```apt search image editor```
+
+![](images/ass6_5.png)
+
+Key dependencies:
+
+-libc6
+-libgdk-pixbuf2.0-0
+-libgegl-0.4-0t64
+-libgimp2.0t64
+-libgtk2.0-0t64
+
+**Package Installation**
+
+Command :
+
+```sudo apt install gimp -y```
+
+The installation was successful, confirmed by launching the application.
+
+**Version Check**
+
+Command :
+
+```apt list --installed | grep gimp```
+
+![](images/ass6_6.png)
+
+### Part 3: Removing & Cleaning Packages
+
+**Package Removal**
+
+Command executed:
+
+```sudo apt remove gimp -y```
+
+Note: This removes the package but keeps configuration files.
+
+**Complete Package Purge**
+
+Command executed:
+
+```sudo apt purge gimp -y```
+
+Here’s the difference between remove and purge in a point-wise format:
+
+remove:
+-Uninstalls the package binaries.
+-Leaves the configuration files behind.
+-The package's settings remain on the system.
+
+purge:
+-Removes both the binaries and the configuration files.
+-Completely removes all traces of the package, including settings and preferences.
+-More thorough if you want to fully erase a package from your system.
+
+**Autoremove Unused Dependencies**
+
+Command :
+
+```sudo apt autoremove -y```
+
+This step is important because:
+-It removes unnecessary packages installed as dependencies.
+-It helps free up disk space.
+-It keeps the system clean by eliminating unused software.
+
+
+Clean Package Cache
+
+Command executed:
+
+```sudo apt clean```
+
+in this steps
+-Deletes all downloaded .deb package files from the local cache.
+-Frees up disk space in /var/cache/apt/archives/.
+-Does not impact any installed packages.
+
+### Part 4: Managing Repositories & Troubleshooting
+
+**Repository List**
+
+Command :
+
+```cat /etc/apt/sources.list```
+
+![](images/ass6_7.png)
+
+Observations:
+
+-Includes the main Ubuntu repositories.
+-Comprises various components (main, restricted, universe, multiverse).
+-Lists both source and binary package repositories.
+-Contains repositories for security updates.
+
+**Adding Universe Repository**
+
+Command executed:
+
+```sudo add-apt-repository universe```
+```sudo apt update```
+
+![](images/ass6_8.png)
+
+The Universe repository includes:
+
+-Packages maintained by the community.
+-Open-source software not officially supported by Ubuntu.
+-A broader range of packages than the main repository.
+-Software that may have more frequent updates.
+
+**Installation Failure Simulation**
+
+Command :
+
+```sudo apt install fakepackage```
+
+![](images/ass6_9.png)
+
+Troubleshooting steps:
+
+-Verify the spelling of the package name.
+-Ensure the required repository is enabled.
+-Run apt update to refresh the package lists.
+-Use apt search to look for similar package names.
+-Consider using alternative package names or sources.
+
+**Bonus Challenge: Package Hold Management**
+
+Commands :
+
+```sudo apt-mark hold firefox```
+```sudo apt-mark unhold firefox```
+
+
+![](images/ass6_10.png)
+
+Reasons to hold a package:
+
+-Stop automatic updates for critical production software.
+-Ensure compatibility with specific software versions.
+-Prevent potential issues caused by updates.
+-Maintain a stable environment for particular applications.
+
+Conclusion
+
+This assignment has provided practical experience with APT package management, including:
+
+-Performing system updates and upgrades.
+-Installing and removing packages.
+-Managing repositories.
+-Troubleshooting common issues.
+-Utilizing advanced package management techniques.
+-These skills are crucial for efficiently maintaining and managing Linux systems.
