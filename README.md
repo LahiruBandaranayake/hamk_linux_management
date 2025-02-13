@@ -209,7 +209,6 @@ Command :
 
 
 **Package List Update**
-
 Command :
 
 ```sudo apt update```
@@ -220,6 +219,7 @@ This step is important because:
 - Ensures the system has up-to-date information on available packages.
 - Is required before installing or upgrading any packages.
 - Helps identify packages that need updating.
+
 
 **System Upgrade**
 
@@ -236,9 +236,9 @@ Command :
 
 2. apt upgrade:
 
--Downloads and installs newer versions of installed packages.
--Upgrades the software to the latest available version based on the updated package information.
--Actually applies the updates and changes to your system.
+- Downloads and installs newer versions of installed packages.
+- Upgrades the software to the latest available version based on the updated package information.
+- Actually applies the updates and changes to your system.
 
 
 **Pending Updates Check**
@@ -260,11 +260,12 @@ Command :
 
 Key dependencies:
 
--libc6
--libgdk-pixbuf2.0-0
--libgegl-0.4-0t64
--libgimp2.0t64
--libgtk2.0-0t64
+- libc6
+- libgdk-pixbuf2.0-0
+- libgegl-0.4-0t64
+- libgimp2.0t64
+- libgtk2.0-0t64
+
 
 **Package Installation**
 
@@ -273,6 +274,7 @@ Command :
 ```sudo apt install gimp -y```
 
 The installation was successful, confirmed by launching the application.
+
 
 **Version Check**
 
@@ -284,31 +286,34 @@ Command :
 
 ### Part 3: Removing & Cleaning Packages
 
+
 **Package Removal**
 
-Command executed:
+Command :
 
 ```sudo apt remove gimp -y```
 
 Note: This removes the package but keeps configuration files.
 
+
 **Complete Package Purge**
 
-Command executed:
+Command :
 
 ```sudo apt purge gimp -y```
 
 Here’s the difference between remove and purge in a point-wise format:
 
-remove:
--Uninstalls the package binaries.
--Leaves the configuration files behind.
--The package's settings remain on the system.
+1. remove:
+- Uninstalls the package binaries.
+- Leaves the configuration files behind.
+- The package's settings remain on the system.
 
-purge:
--Removes both the binaries and the configuration files.
--Completely removes all traces of the package, including settings and preferences.
--More thorough if you want to fully erase a package from your system.
+2. purge:
+- Removes both the binaries and the configuration files.
+- Completely removes all traces of the package, including settings and preferences.
+- More thorough if you want to fully erase a package from your system.
+
 
 **Autoremove Unused Dependencies**
 
@@ -317,21 +322,21 @@ Command :
 ```sudo apt autoremove -y```
 
 This step is important because:
--It removes unnecessary packages installed as dependencies.
--It helps free up disk space.
--It keeps the system clean by eliminating unused software.
+- It removes unnecessary packages installed as dependencies.
+- It helps free up disk space.
+- It keeps the system clean by eliminating unused software.
 
 
-Clean Package Cache
+**Clean Package Cache**
 
 Command executed:
 
 ```sudo apt clean```
 
-in this steps
--Deletes all downloaded .deb package files from the local cache.
--Frees up disk space in /var/cache/apt/archives/.
--Does not impact any installed packages.
+In this steps
+- Deletes all downloaded .deb package files from the local cache.
+- Frees up disk space in /var/cache/apt/archives/.
+- Does not impact any installed packages.
 
 ### Part 4: Managing Repositories & Troubleshooting
 
@@ -345,14 +350,15 @@ Command :
 
 Observations:
 
--Includes the main Ubuntu repositories.
--Comprises various components (main, restricted, universe, multiverse).
--Lists both source and binary package repositories.
--Contains repositories for security updates.
+- Includes the main Ubuntu repositories.
+- Comprises various components (main, restricted, universe, multiverse).
+- Lists both source and binary package repositories.
+- Contains repositories for security updates.
+
 
 **Adding Universe Repository**
 
-Command executed:
+Command :
 
 ```sudo add-apt-repository universe```
 ```sudo apt update```
@@ -361,10 +367,11 @@ Command executed:
 
 The Universe repository includes:
 
--Packages maintained by the community.
--Open-source software not officially supported by Ubuntu.
--A broader range of packages than the main repository.
--Software that may have more frequent updates.
+- Packages maintained by the community.
+- Open-source software not officially supported by Ubuntu.
+- A broader range of packages than the main repository.
+- Software that may have more frequent updates.
+
 
 **Installation Failure Simulation**
 
@@ -376,11 +383,12 @@ Command :
 
 Troubleshooting steps:
 
--Verify the spelling of the package name.
--Ensure the required repository is enabled.
--Run apt update to refresh the package lists.
--Use apt search to look for similar package names.
--Consider using alternative package names or sources.
+- Verify the spelling of the package name.
+- Ensure the required repository is enabled.
+- Run apt update to refresh the package lists.
+- Use apt search to look for similar package names.
+- Consider using alternative package names or sources.
+
 
 **Bonus Challenge: Package Hold Management**
 
@@ -394,18 +402,18 @@ Commands :
 
 Reasons to hold a package:
 
--Stop automatic updates for critical production software.
--Ensure compatibility with specific software versions.
--Prevent potential issues caused by updates.
--Maintain a stable environment for particular applications.
+- Stop automatic updates for critical production software.
+- Ensure compatibility with specific software versions.
+- Prevent potential issues caused by updates.
+- Maintain a stable environment for particular applications.
 
 Conclusion
 
 This assignment has provided practical experience with APT package management, including:
 
--Performing system updates and upgrades.
--Installing and removing packages.
--Managing repositories.
--Troubleshooting common issues.
--Utilizing advanced package management techniques.
--These skills are crucial for efficiently maintaining and managing Linux systems.
+- Performing system updates and upgrades.
+- Installing and removing packages.
+- Managing repositories.
+- Troubleshooting common issues.
+- Utilizing advanced package management techniques.
+- These skills are crucial for efficiently maintaining and managing Linux systems.
